@@ -1,0 +1,4 @@
+{{!< default}}
+{{> "header"}}
+<main class="ghost-page" id="main"><h1>{{@site.title}}</h1><div class="post-list">{{#foreach posts}}<article class="{{post_class}}"><h2><a href="{{url}}">{{title}}</a></h2><p>{{excerpt words="35"}}</p></article>{{/foreach}}</div>{{pagination}}</main>
+{{> "subpage-footer"}}

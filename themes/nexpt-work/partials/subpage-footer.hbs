@@ -1,0 +1,22 @@
+<footer class="site-footer">
+{{#unless hideContact}}
+  <div class="footer-contact-band">
+    <div class="footer-contact-inner">
+      <section class="footer-contact-card" aria-labelledby="footer-contact-title">
+        <div class="footer-portraits"><img src="{{asset 'raphael-heusser.webp'}}" width="104" height="104" loading="lazy" decoding="async" alt="Raphael Heusser"><img src="{{asset 'christian-heusser.webp'}}" width="104" height="104" loading="lazy" decoding="async" alt="Christian Heusser"></div>
+        <div class="footer-contact-copy"><p class="eyebrow">{{@custom.footer_contact_kicker}}</p><h2 id="footer-contact-title">Sprechen wir über<br>euren Arbeitsalltag.</h2><p class="footer-contact-names"><strong>Raphael &amp; Christian Heusser</strong><span>Die Gründer von Nexpt</span></p></div>
+        <div class="footer-contact-actions"><a class="button" href="{{@site.url}}/work/kontakt/">{{@custom.closing_button}} <span aria-hidden="true">↗</span></a><a class="text-link" href="{{@site.url}}/work/wer-wir-sind/">Uns kennenlernen</a></div>
+      </section>
+      <div class="footer-service"><h2>Nexpt kennenlernen.</h2><div><p>{{@custom.closing_text}}</p><a class="text-link" href="{{@site.url}}/work/kontakt/"><span aria-hidden="true">→</span> Zum Kontakt</a></div></div>
+    </div>
+  </div>
+{{/unless}}
+  <div class="footer-grid">
+    <div class="footer-brand"><a class="brand" href="{{@site.url}}/work/">nexpt<span>.</span></a><p>Das Arbeitsinstrument für Projekte, Menschen und Wissen.</p></div>
+    <nav aria-label="Produkte"><h2>Produkte</h2><a href="{{@site.url}}/work/">Nexpt Work</a><a href="{{@site.url}}/work/hr/">Nexpt HR</a><a href="{{@site.url}}/work/outline/">Nexpt Outline</a></nav>
+    <nav aria-label="Arbeitsweisen"><h2>Arbeitsweisen</h2><a href="{{@site.url}}/work/funktionen/">Arbeitsmodell</a><a href="{{@site.url}}/work/funktionen/#work-modes">Projekt und Betrieb</a><a href="{{@site.url}}/work/einsatzbereiche/">Einsatzbereiche</a></nav>
+    <nav aria-label="Über Nexpt"><h2>Über Nexpt</h2><a href="{{@site.url}}/work/wer-wir-sind/">Wer wir sind</a><a href="{{@site.url}}/work/wer-wir-sind/#film-title">Unser Film</a><a href="{{@site.url}}/work/faq/">Häufige Fragen</a></nav>
+    <div class="footer-invitation"><h2>Im Gespräch bleiben</h2><p>Fragen, Ideen oder ein konkreter Ablauf? Wir freuen uns darauf.</p><a class="footer-contact-link" href="{{@site.url}}/work/kontakt/">Kontakt aufnehmen <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="footer-bottom"><span>© {{date format="YYYY"}} Nexpt</span><span>Arbeit. Menschen. Wissen.</span><a href="#main">Nach oben <span aria-hidden="true">↑</span></a></div>
+</footer>

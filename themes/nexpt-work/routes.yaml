@@ -1,0 +1,26 @@
+routes:
+  /work/:
+    template: work
+  /work/wer-wir-sind/:
+    template: wer-wir-sind
+  /work/kontakt/:
+    template: kontakt
+  /work/funktionen/:
+    template: funktionen
+  /work/einsatzbereiche/:
+    template: einsatzbereiche
+  /work/hr/:
+    template: hr
+  /work/outline/:
+    template: outline
+  /work/faq/:
+    template: faq
+  /work/kontakt/danke/:
+    template: kontakt-danke
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
