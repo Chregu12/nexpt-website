@@ -1,0 +1,11 @@
+<dialog class="site-search" id="site-search" aria-labelledby="site-search-title" data-search-index="{{asset 'search-index.json'}}">
+  <div class="search-heading"><h2 id="site-search-title">Was möchtest du entdecken?</h2><form method="dialog"><button class="search-close" aria-label="Suche schliessen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></form></div>
+  <div role="search"><label for="site-search-input">Nexpt durchsuchen</label><div class="search-field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><input id="site-search-input" type="search" placeholder="Produkte, Funktionen, Fragen …" autocomplete="off" enterkeyhint="search" aria-controls="search-results" autofocus></div></div>
+  <p class="search-status" data-search-status role="status" aria-live="polite">Beliebte Einstiege</p>
+  <ul class="search-results" id="search-results">
+    <li><a href="{{@site.url}}/work/"><strong>Nexpt Work</strong><span>Arbeit und Überblick</span></a></li>
+    <li><a href="{{@site.url}}/work/hr/"><strong>Nexpt HR</strong><span>Menschen und Personalprozesse</span></a></li>
+    <li><a href="{{@site.url}}/work/outline/"><strong>Nexpt Outline</strong><span>Wissen und Dokumentation</span></a></li>
+    <li><a href="{{@site.url}}/work/faq/"><strong>Häufige Fragen</strong><span>Antworten rund um Nexpt</span></a></li>
+  </ul>
+</dialog>

@@ -2,6 +2,8 @@
 """Check all Nexpt landing pages, assets, links, dialogs and Ghost settings."""
 import importlib.util
 import re
+import subprocess
+import sys
 import tempfile
 from html.parser import HTMLParser
 from pathlib import Path
@@ -39,8 +41,9 @@ with tempfile.TemporaryDirectory() as directory:
                 assert (output / path.lstrip('/')).is_file(), ('missing asset', ref)
             elif path in pages:
                 assert not url.fragment or url.fragment in pages[path].ids, ('missing anchor', route, ref)
-    assert len(pages['/work/'].dialogs) == 5
+    assert len(pages['/work/'].dialogs) == 6
     source = '\n'.join(f.read_text() for f in preview.THEME.rglob('*.hbs'))
     assert 'data-higgsfield' not in source and not re.search(r'''{{asset ['"]video/''', source)
     assert set(re.findall(r'{{@custom\.([^}]+)}}', source)) == set(preview.CUSTOM)
-print('PASS: 8 pages, assets, internal anchors, unique IDs, 5 dialogs, ARIA targets and all Ghost custom settings.')
+subprocess.run([sys.executable, str(Path(__file__).with_name('build-nexpt-search.py')), '--check'], check=True)
+print('PASS: 8 pages, assets, internal anchors, unique IDs, 6 dialogs, ARIA targets and all Ghost custom settings.')
