@@ -111,13 +111,23 @@ const context = {
 };
 
 vm.runInNewContext(fs.readFileSync(`${__dirname}/../themes/nexpt-work/assets/work-stories.js`, 'utf8'), context);
-assert.equal(pending.size, 0, 'No automatic motion before the user presses play');
-assert.equal(play.attributes['aria-pressed'], 'false');
+assert.equal(pending.size, 0, 'Autoplay waits until the carousel is visible');
+assert.equal(play.attributes['aria-pressed'], 'true');
+intersect([{ isIntersecting: true }]); step(); step();
+assert.ok(Number(dots[0]['--story-progress']) > 0, 'The active indicator advances with autoplay');
+play.emit('click');
+const pausedProgress = dots[0]['--story-progress'];
+step(); step();
+assert.equal(dots[0]['--story-progress'], pausedProgress, 'Pause freezes the progress indicator');
+intersect([{ isIntersecting: false }]); intersect([{ isIntersecting: true }]);
+assert.equal(pending.size, 0, 'A user pause survives scrolling out and back into view');
+play.emit('click'); step(); step();
+assert.ok(Number(dots[0]['--story-progress']) > Number(pausedProgress), 'Play resumes from the paused position');
 tabs[0].emit('keydown', { key: 'ArrowRight', preventDefault() {} });
 assert.equal(panels[1].hidden, false);
 assert.equal(document.activeElement, tabs[1]);
 assert.equal(controls.parent, panels[1]);
-play.emit('click'); step(); step();
+step(); step();
 assert.equal(play.attributes['aria-pressed'], 'true');
 assert.ok(rendered.at(-1).time > 0, 'Motion advances over real frame timestamps');
 next.focus(); next.emit('click');
@@ -177,3 +187,63 @@ for (const product of ['work', 'hr', 'outline']) {
   animations.length = 0;
 }
 console.log('PASS: every SVG track, ordered keyframes, paused creation and bounded timeline seeking.');
+
+// Check standalone playback with the real controller on each product page.
+for (const reduceMotion of [false, true]) {
+  const productDocument = new Element();
+  productDocument.hidden = false;
+  const preference = new Element();
+  preference.matches = reduceMotion;
+  const observers = [];
+  const productFrames = new Map();
+  let frameId = 0, timestamp = 0;
+  const products = ['work', 'hr', 'outline'].map(product => {
+    const container = new Element();
+    const button = new Element();
+    const scene = new Element();
+    const node = Object.assign(new VectorElement(), { dataset: { motion: `${product}-${product === 'work' ? 'card' : product === 'hr' ? 'request' : 'selection'}` } });
+    scene.selectors['[data-motion]'] = [node];
+    container.selectors = { '[data-motion-scene]': scene, '[data-motion-play]': button };
+    return { container, button };
+  });
+  productDocument.selectors['[data-product-motion]'] = products.map(product => product.container);
+  const productContext = {
+    Element: VectorElement, document: productDocument,
+    window: { matchMedia: () => preference, IntersectionObserver: true },
+    IntersectionObserver: class { constructor(callback) { observers.push(callback); } observe() {} },
+    requestAnimationFrame: callback => { productFrames.set(++frameId, callback); return frameId; },
+    cancelAnimationFrame: id => productFrames.delete(id)
+  };
+  const advance = () => { timestamp += 100; const callbacks = [...productFrames.values()]; productFrames.clear(); callbacks.forEach(callback => callback(timestamp)); };
+  vm.runInNewContext(fs.readFileSync(`${__dirname}/../themes/nexpt-work/assets/product-motion.js`, 'utf8'), productContext);
+  assert.equal(productFrames.size, 0, 'Standalone autoplay waits for visibility');
+  observers.forEach(callback => callback([{ isIntersecting: true }]));
+  advance(); advance();
+  for (const { container, button } of products) {
+    assert.equal(button.attributes['aria-pressed'], String(!reduceMotion));
+    assert.equal(button.disabled, reduceMotion);
+    if (!reduceMotion) assert.ok(Number(container['--motion-progress']) > 0);
+  }
+  if (reduceMotion) { assert.equal(productFrames.size, 0, 'Reduced motion never autoplays'); continue; }
+  products.forEach(({ button }) => button.emit('click'));
+  const frozen = products.map(({ container }) => container['--motion-progress']);
+  advance(); advance();
+  products.forEach(({ container }, i) => assert.equal(container['--motion-progress'], frozen[i]));
+  observers.forEach(callback => callback([{ isIntersecting: false }]));
+  observers.forEach(callback => callback([{ isIntersecting: true }]));
+  assert.equal(productFrames.size, 0, 'Scrolling does not undo a user pause');
+  products.forEach(({ button }) => button.emit('click'));
+  advance(); advance();
+  products.forEach(({ container }, i) => assert.ok(Number(container['--motion-progress']) > Number(frozen[i])));
+  productDocument.hidden = true; productDocument.emit('visibilitychange');
+  assert.equal(productFrames.size, 0, 'Hidden tabs stop all standalone clocks');
+  productDocument.hidden = false; productDocument.emit('visibilitychange');
+  observers.forEach(callback => callback([{ isIntersecting: false }]));
+  assert.equal(productFrames.size, 0, 'Offscreen product scenes stop requesting frames');
+  observers.forEach(callback => callback([{ isIntersecting: true }]));
+  for (let i = 0; i < 100; i++) advance();
+  products.forEach(({ container }) => assert.ok(Number(container['--motion-progress']) < .1, 'The indicator loops with the 10-second scene'));
+  preference.matches = true; preference.emit('change');
+  assert.equal(productFrames.size, 0, 'Changing the motion preference stops active playback');
+}
+console.log('PASS: Work, HR and Outline autoplay, synchronized progress, pause/resume, loop, offscreen/background suspension and reduced motion.');
