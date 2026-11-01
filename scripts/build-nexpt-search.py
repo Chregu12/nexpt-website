@@ -40,7 +40,7 @@ target = preview.THEME / 'assets/search-index.json'
 content = json.dumps(pages, ensure_ascii=False, indent=2) + '\n'
 if '--check' in sys.argv:
     assert target.is_file() and target.read_text() == content, 'Search index is stale; run python3 scripts/build-nexpt-search.py'
-    print('PASS: public search index matches all 8 page templates.')
+    print(f'PASS: public search index matches all {len(pages)} page templates.')
 else:
     target.write_text(content)
     print('Updated search index:', len(pages), 'pages')

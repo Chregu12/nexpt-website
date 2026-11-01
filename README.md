@@ -13,9 +13,9 @@ Das Ghost-Theme unter [`themes/nexpt-work/`](themes/nexpt-work/) rendert die
 benötigt weder ein Node-Build noch externe UI-Bibliotheken.
 
 - Produktseiten für **Work**, **HR** und **Outline**, dazu Arbeitsmodell,
-  Einsatzbereiche, häufige Fragen, Gründer und Kontakt.
+  Einsatzbereiche, Integration, häufige Fragen, Gründer und Kontakt.
 - Desktop-Megamenü sowie mobile Navigation mit animiertem Hamburger.
-- Lokale Suche über alle acht Seiten; Suchbegriffe bleiben im Browser.
+- Lokale Suche über alle neun Seiten; Suchbegriffe bleiben im Browser.
 - SVG-Produktvorschauen mit Autoplay, Pause/Play und Fortschrittsanzeige.
 - Gezeichnete Pencil-Akzente: Kreise, Unterstreichungen und Häkchen.
 - Vorteilskacheln mit Dialogen, Gründerfilm und gemeinsamer Kontaktbereich.
@@ -23,6 +23,8 @@ benötigt weder ein Node-Build noch externe UI-Bibliotheken.
 
 Die Produktvorschauen erklären Abläufe anhand von Beispieldaten. Den aktuellen
 Funktionsumfang und mögliche Anbindungen klären wir im persönlichen Gespräch.
+Die eigene Seite [`/work/integration/`](https://nexpt.ch/work/integration/) erklärt
+den End-to-End-Prozess von HR über OpenDirectory oder Entra bis Work und Outline.
 
 ## Lokal ansehen
 

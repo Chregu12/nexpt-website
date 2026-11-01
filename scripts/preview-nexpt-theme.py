@@ -10,7 +10,7 @@ from pathlib import Path
 
 THEME = Path(__file__).resolve().parents[1] / 'themes/nexpt-work'
 CUSTOM = json.loads((THEME / 'package.json').read_text())['config']['custom']
-PAGES = ['work', 'hr', 'outline', 'funktionen', 'einsatzbereiche', 'faq', 'wer-wir-sind', 'kontakt']
+PAGES = ['work', 'hr', 'outline', 'integration', 'funktionen', 'einsatzbereiche', 'faq', 'wer-wir-sind', 'kontakt']
 
 
 def render(text, base_url, hide_contact=False):
