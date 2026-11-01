@@ -1,125 +1,90 @@
-# Nexpt Website & Ghost
+# Nexpt Website
 
-Dieses Repository enthält den produktiven Nexpt-Auftritt und das vorhandene
-Headless-Projekt mit Seiteneditor.
+Der Webauftritt von **[nexpt.ch](https://nexpt.ch/work/)** für Nexpt Work, Nexpt HR
+und Nexpt Outline. Nexpt wird als flexibles Arbeitsinstrument für Projekte,
+Menschen und Wissen vorgestellt – mit eigenen Begriffen und Abläufen je Team.
 
-| Bereich | Status |
-|---|---|
-| [`themes/nexpt-work/`](themes/nexpt-work/) | Live-Theme für **nexpt.ch**, direkt durch Ghost gerendert |
-| `frontend/` | Separates Next.js-Frontend mit Puck-Seiteneditor |
-| `mcp/` | Ghost-API-Zugriff für Agenten |
+Repository: [Chregu12/nexpt-website](https://github.com/Chregu12/nexpt-website)
 
-Das Theme enthält Produktmenü, Work-/HR-/Outline-Seiten, Modals und präzise
-Vektoranimationen mit Play/Pause. [Vorschau, Tests und Bereitstellung](themes/nexpt-work/README.md).
+## Produktiver Auftritt
 
-Die beiden Codebasen sind hier zusammengeführt. Der Seiteneditor steuert das
-Live-Theme noch nicht; dafür wäre eine Übernahme der Nexpt-Seiten in Next.js nötig.
+Das Ghost-Theme unter [`themes/nexpt-work/`](themes/nexpt-work/) rendert die
+öffentlichen Seiten direkt. Es verwendet Handlebars, CSS und JavaScript und
+benötigt weder ein Node-Build noch externe UI-Bibliotheken.
 
----
+- Produktseiten für **Work**, **HR** und **Outline**, dazu Arbeitsmodell,
+  Einsatzbereiche, häufige Fragen, Gründer und Kontakt.
+- Desktop-Megamenü sowie mobile Navigation mit animiertem Hamburger.
+- Lokale Suche über alle acht Seiten; Suchbegriffe bleiben im Browser.
+- SVG-Produktvorschauen mit Autoplay, Pause/Play und Fortschrittsanzeige.
+- Gezeichnete Pencil-Akzente: Kreise, Unterstreichungen und Häkchen.
+- Vorteilskacheln mit Dialogen, Gründerfilm und gemeinsamer Kontaktbereich.
+- Tastaturbedienung und Unterstützung für reduzierte Bewegung.
 
-## Vorhandenes Headless-Projekt
+Die Produktvorschauen erklären Abläufe anhand von Beispieldaten. Den aktuellen
+Funktionsumfang und mögliche Anbindungen klären wir im persönlichen Gespräch.
 
-Persönliche Webseite & Blog im **Antigravity-Look**, gebaut als **Headless-Setup**:
+## Lokal ansehen
 
-- **Ghost 6** (self-hosted, Docker) = CMS, Admin-Panel & APIs – die codefreie Redaktion.
-- **Next.js** (App Router, TypeScript) = selbst gebautes Frontend auf den Ghost-APIs.
-- Zweisprachig **DE/EN**, dunkles Design, **Ghost-native cookielose Analytics**.
-- **MCP-Server** (`mcp/`) = headless-Zugriff für KI-Agenten (lesen + schreiben).
-- **Drag-&-Drop-Builder** (Puck) unter `/builder` für Seiten, Startseite & Beiträge.
+```sh
+git clone https://github.com/Chregu12/nexpt-website.git
+cd nexpt-website
+python3 scripts/preview-nexpt-theme.py
+```
 
-## Komponenten
+Die Vorschau läuft unter <http://127.0.0.1:8766/work/>. Sie verwendet die
+Standardtexte des Themes; Ghost-Datenbank und Kontakt-API werden nicht gestartet.
 
-| Ordner | Zweck |
-|---|---|
-| `frontend/` | Next.js-Webseite (App Router, TS) |
-| `docker/` | Compose-Stack (Ghost 6 + MySQL + Caddy) |
-| `mcp/` | MCP-Server: Ghost für KI-Agenten ([mcp/README.md](./mcp/README.md)) |
-| `scripts/` | Seed, Backup, Restore, **Healthcheck** (Upgrade-Gate) |
-| `docs/` | Redaktions-, Deployment- & **Upgrade**-Guide |
+Nach Änderungen an Seitentexten den Suchindex aktualisieren:
 
-**Upgrade-Sicherheit:** Ghost lässt sich gefahrlos aktualisieren — nach jedem Update prüft
-`node scripts/healthcheck.mjs` den kompletten API-/Render-Vertrag (CI fährt das automatisch).
-Siehe **[docs/UPGRADE.md](./docs/UPGRADE.md)**.
+```sh
+python3 scripts/build-nexpt-search.py
+```
 
-Vollständige Spezifikation: **[ANFORDERUNGEN.md](./ANFORDERUNGEN.md)**.
+## Prüfen
 
----
+```sh
+python3 scripts/check-nexpt-theme.py
+node scripts/test-nexpt-interactions.cjs
+```
+
+Die Checks prüfen Seiten, Assets, interne Links, ARIA-Verweise, Dialoge und den
+Suchindex sowie Navigation, Suche und Animationssteuerung. GitHub Actions prüft
+zusätzlich das Headless-Frontend und die Integration mit Ghost.
 
 ## Projektstruktur
 
-```
-webseite-ghost/
-├─ ANFORDERUNGEN.md     # End-to-End-Anforderungen (Quelle der Wahrheit)
-├─ docker/              # docker-compose (Ghost 6 + MySQL + Caddy), .env.example, Caddyfile
-├─ frontend/            # Next.js App (App Router, TS)
-└─ docs/                # Redaktions-Guide
-```
+| Pfad | Aufgabe |
+|---|---|
+| [`themes/nexpt-work/`](themes/nexpt-work/) | Produktives Ghost-Theme für nexpt.ch |
+| [`scripts/`](scripts/) | Vorschau, Suchindex, Tests und Betriebsskripte |
+| [`frontend/`](frontend/) | Separates Next.js-Frontend mit Puck-Seiteneditor |
+| [`mcp/`](mcp/) | Ghost-API-Zugriff für Agenten |
+| [`docker/`](docker/) | Compose-Konfiguration für das Headless-Projekt |
+| [`docs/`](docs/) | Redaktion, Deployment und Updates des Headless-Projekts |
 
-## Schnellstart (lokale Entwicklung)
+## Änderungen und Bereitstellung
 
-### 1. Ghost + MySQL starten
+Seitentexte und Layouts liegen in den `.hbs`-Vorlagen des Themes, gemeinsame
+Bausteine in `partials/`, Gestaltung und Interaktionen in `assets/`. Die sechs
+Ghost-Custom-Texte sind in `package.json` definiert.
 
-```bash
-cd docker
-cp .env.example .env          # Werte anpassen (DB-Passwörter etc.)
-docker compose up -d          # startet mysql + ghost
-```
+Für eine Veröffentlichung das aktive Theme sichern, die Theme-Version erhöhen
+und die geprüfte Version in Ghost bereitstellen. Die vorhandenen URLs und
+`routes.yaml` müssen erhalten bleiben. Das Kontaktformular verwendet die bereits
+betriebene API unter `/api/contact/`.
 
-- Ghost-Admin: <http://localhost:2368/ghost> → ersten Account anlegen.
-- In **Einstellungen → Integrationen** eine *Custom Integration* erstellen und den
-  **Content API Key** (und für Skripte den **Admin API Key**) kopieren.
+Details: **[Theme-Dokumentation](themes/nexpt-work/README.md)**.
+Zugangsdaten, Datenbanken, Serverkonfiguration und Backups gehören nicht ins Git.
 
-### 2. Frontend starten
+## Headless-Frontend und Seiteneditor
 
-```bash
-cd ../frontend
-npm install
-# Keys aus Ghost eintragen:
-echo "GHOST_URL=http://localhost:2368"     >  .env.local
-echo "GHOST_CONTENT_API_KEY=<dein-key>"    >> .env.local
-echo "REVALIDATE_SECRET=$(openssl rand -hex 16)" >> .env.local
-npm run dev
-```
+Das bestehende Next.js-/Puck-Projekt bleibt als separater Renderer erhalten.
+Änderungen im Seiteneditor wirken derzeit auf dieses Frontend; für den
+produktiven Nexpt-Auftritt werden die Ghost-Theme-Vorlagen geändert.
 
-- Webseite: <http://localhost:3000> → leitet auf `/de` bzw. `/en` weiter.
-- Das Frontend rendert auch **ohne Inhalte/Keys** (Fallbacks), du siehst dann das Grundgerüst.
-
-### 3. Inhalte pflegen (codefrei)
-
-Siehe **[docs/REDAKTION.md](./docs/REDAKTION.md)** – u. a. die `site-config`-Seite (JSON)
-für Hero-Texte & Sektions-Schalter sowie die Tag-Konventionen (`#feature`, `#de`/`#en`).
-
-Optional: schnell Demo-Inhalte erzeugen (idempotent, Admin-API-Key nötig):
-
-```bash
-GHOST_URL=http://localhost:2368 GHOST_ADMIN_API_KEY=<id>:<secret> node scripts/seed.mjs
-```
-
-## Produktion
-
-```bash
-cd docker
-# SITE_DOMAIN / CMS_DOMAIN + GHOST_URL=https://cms.example.com in .env setzen
-docker compose --profile web up -d --build   # ghost + mysql + frontend + caddy (TLS)
-```
-
-Danach in Ghost einen **Webhook** auf `https://<SITE_DOMAIN>/api/revalidate?secret=<REVALIDATE_SECRET>`
-einrichten (Events: `post.*`, `page.*`, `tag.*`, `settings.changed`).
-
-Vollständige Anleitung (DNS, TLS, Keys, Webhook, Backups, Updates):
-**[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)**. Backups: `scripts/backup.sh` (Cron), Restore:
-`scripts/restore.sh`.
-
-## Status
-
-Umgesetzt: **M1** (Docker-Setup) · **M2** (Next.js-Grundgerüst + Content-API-Client, i18n,
-Blog, Revalidate-Webhook) · **M3** (alle modularen Startseiten-Sektionen aus getaggten
-Inhalten: Logos, Features, Showcase, Testimonials, neueste Beiträge + Newsletter via Ghost
-Members, je per `site-config` schaltbar) · **M4/SEO** (Tag-Archive, RSS pro Sprache,
-`sitemap.xml`, `robots.txt`, JSON-LD für Article & WebSite, hreflang/RSS-Alternates) ·
-**M7** (clientseitige Suche aus dem Content-Index, content-driven Kontaktseite) ·
-**M8** (A11y: Skip-Link/Fokus-Stile; SEO: Canonical, x-default, Favicons aus Ghost;
-Performance: responsive Bild-`sizes`). **End-to-End gegen echtes Ghost 6 verifiziert** –
-zwei Bugs gefunden & behoben (slug-Reads, Blog-Filter). Idempotentes `scripts/seed.mjs`.
-Offen: Deployment/Backups (M9). Siehe Roadmap in
-[ANFORDERUNGEN.md](./ANFORDERUNGEN.md#16-roadmap--meilensteine).
+- [Headless-Deployment](docs/DEPLOYMENT.md)
+- [Redaktion und Inhaltsmodell](docs/REDAKTION.md)
+- [Updates und Integrationsprüfung](docs/UPGRADE.md)
+- [MCP-Server](mcp/README.md)
+- [Ursprüngliche Headless-Anforderungen](ANFORDERUNGEN.md)

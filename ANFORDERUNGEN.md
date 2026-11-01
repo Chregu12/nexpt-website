@@ -327,7 +327,7 @@ frontend/
 ## 14. Repository-Struktur (Ziel)
 
 ```
-webseite-ghost/
+nexpt-website/
 ├─ ANFORDERUNGEN.md
 ├─ docker/
 │  ├─ docker-compose.yml

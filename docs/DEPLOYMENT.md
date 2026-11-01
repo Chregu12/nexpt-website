@@ -75,7 +75,7 @@ GHOST_URL=https://<CMS_DOMAIN> GHOST_ADMIN_API_KEY=<id>:<secret> node scripts/se
 
 ```bash
 # z. B. täglich um 3 Uhr
-0 3 * * * cd /pfad/zu/webseite-ghost && ./scripts/backup.sh >> /var/log/ghost-backup.log 2>&1
+0 3 * * * cd /pfad/zu/nexpt-website && ./scripts/backup.sh >> /var/log/ghost-backup.log 2>&1
 ```
 
 Wiederherstellen:

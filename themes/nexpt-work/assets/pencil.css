@@ -1,10 +1,16 @@
-/* Static SVG accents only. Product scenes use controlled vector timelines. */
+/* Hand-drawn accents appear once; without JS they remain fully visible. */
 .pencil-word{display:inline-block;position:relative;isolation:isolate;white-space:nowrap}
 .pencil-art{display:block;overflow:visible;pointer-events:none;color:#72984e}
 .pencil-art.blue{color:#4b82b8}.pencil-art.graphite{color:#7c857a}
+.product-hr .pencil-art{color:#5d89ad}.product-outline .pencil-art{color:#8d7baa}
 .pencil-art.underline{position:absolute;left:-2%;bottom:-.14em;width:104%;height:.3em;z-index:-1}
 .pencil-art.circle{position:absolute;inset:-15% -12% auto;width:124%;height:136%;z-index:-1}
 .pencil-stroke{stroke:currentColor;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none;opacity:.92}
 .pencil-stroke:nth-child(2){stroke-width:3.6;opacity:.58}
 .hero-word .pencil-art.underline{bottom:-.13em;height:.28em}
 .hero-pencil-arrow{display:none}.task-pencil,.team-pencil{display:none}
+.pencil-card{position:relative}.pencil-card>.pencil-check{position:absolute;right:20px;top:-25px;width:65px;height:52px;z-index:1}
+.pencil-armed .pencil-stroke{stroke-dasharray:1;stroke-dashoffset:1}
+.pencil-armed.is-pencil-drawn .pencil-stroke{animation:pencil-draw 1.05s cubic-bezier(.35,.05,.3,1) var(--pencil-delay,180ms) both}
+@keyframes pencil-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@media(prefers-reduced-motion:reduce){[data-pencil] .pencil-stroke{animation:none!important;stroke-dasharray:none!important;stroke-dashoffset:0!important}}

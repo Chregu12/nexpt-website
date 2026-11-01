@@ -9,7 +9,7 @@ class Element {
     this.dataset = {};
     this.style = { setProperty: (key, value) => { this[key] = value; } };
     this.classes = new Set();
-    this.classList = { add: name => this.classes.add(name), toggle: (name, on) => on ? this.classes.add(name) : this.classes.delete(name) };
+    this.classList = { add: name => this.classes.add(name), remove: name => this.classes.delete(name), toggle: (name, on) => on ? this.classes.add(name) : this.classes.delete(name) };
     this.children = [];
     this.selectors = {};
   }
@@ -247,4 +247,35 @@ for (const reduceMotion of [false, true]) {
   assert.equal(productFrames.size, 0, 'Changing the motion preference stops active playback');
 }
 console.log('PASS: Work, HR and Outline autoplay, synchronized progress, pause/resume, loop, offscreen/background suspension and reduced motion.');
+
+for (const [reduceMotion, hasObserver] of [[false, true], [true, true], [false, false]]) {
+  const preference = new Element(); preference.matches = reduceMotion;
+  const accents = [new Element(), new Element()];
+  accents.forEach(accent => { accent.selectors['.pencil-stroke'] = [new Element(), new Element()]; });
+  const observed = new Set(); let onIntersection, disconnected = false;
+  vm.runInNewContext(fs.readFileSync(`${__dirname}/../themes/nexpt-work/assets/pencil.js`, 'utf8'), {
+    window: { matchMedia: () => preference, ...(hasObserver ? { IntersectionObserver: true } : {}) },
+    document: { querySelectorAll: () => accents },
+    IntersectionObserver: class {
+      constructor(callback) { onIntersection = callback; }
+      observe(element) { observed.add(element); }
+      unobserve(element) { observed.delete(element); }
+      disconnect() { disconnected = true; }
+    }
+  });
+  if (reduceMotion || !hasObserver) {
+    assert.ok(accents.every(accent => !accent.classes.has('pencil-armed')), 'Fallbacks keep the full drawing visible');
+    assert.equal(observed.size, 0); continue;
+  }
+  onIntersection([{ target: accents[0], isIntersecting: false }]);
+  assert.equal(accents[0].classes.has('is-pencil-drawn'), false);
+  onIntersection([{ target: accents[0], isIntersecting: true }]);
+  assert.equal(accents[0].classes.has('is-pencil-drawn'), true);
+  assert.equal(observed.has(accents[0]), false, 'Each accent draws once and is then unobserved');
+  assert.equal(observed.has(accents[1]), true);
+  preference.matches = true; preference.emit('change');
+  assert.equal(disconnected, true);
+  assert.ok(accents.every(accent => !accent.classes.has('pencil-armed')), 'Changing to reduced motion reveals every accent immediately');
+}
+console.log('PASS: Pencil reveal on entry, one-time drawing and static fallbacks for reduced motion or missing observers.');
 require('./test-nexpt-navigation.cjs');

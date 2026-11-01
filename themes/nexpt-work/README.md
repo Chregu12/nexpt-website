@@ -22,6 +22,7 @@ Vorschau: `http://127.0.0.1:8766/work/`. Sie verwendet die Standardtexte aus
 - `partials/motion-{work,hr,outline}.hbs`: selbst gestaltete SVG-Produktansichten.
 - `assets/product-motion.js`: pausierbare Zeitachsen für die drei Ansichten.
 - `assets/work-stories.js`: Produktauswahl, Play/Pause, Fortschritt, Dialoge.
+- `partials/pencil-*.hbs` und `assets/pencil.{css,js}`: Kreise, Unterstreichungen und Häkchen, die beim Scrollen einmal gezeichnet werden.
 - `partials/header.hbs` und `assets/navigation.js`: kontextabhängiges Produktmenü.
 - Mobil: Navigation über die Bildschirmhöhe, animierter Hamburger und Tastatursteuerung.
 - `partials/site-search.hbs` und `assets/site-search.js`: lokale Suche über alle acht Seiten.
