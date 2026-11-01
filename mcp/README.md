@@ -29,7 +29,7 @@ Ghost Admin → Settings → Integrations).
   "mcpServers": {
     "ghost": {
       "command": "node",
-      "args": ["/absolute/path/to/webseite-ghost/mcp/dist/index.js"],
+      "args": ["/absolute/path/to/nexpt-website/mcp/dist/index.js"],
       "env": {
         "GHOST_URL": "https://cms.example.com",
         "GHOST_ADMIN_API_KEY": "<id>:<secret>"
