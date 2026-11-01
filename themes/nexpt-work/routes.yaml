@@ -13,6 +13,8 @@ routes:
     template: hr
   /work/outline/:
     template: outline
+  /work/integration/:
+    template: integration
   /work/faq/:
     template: faq
   /work/kontakt/danke/:

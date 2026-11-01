@@ -25,9 +25,10 @@ Vorschau: `http://127.0.0.1:8766/work/`. Sie verwendet die Standardtexte aus
 - `partials/pencil-*.hbs` und `assets/pencil.{css,js}`: Kreise, Unterstreichungen und Häkchen, die beim Scrollen einmal gezeichnet werden.
 - `partials/header.hbs` und `assets/navigation.js`: kontextabhängiges Produktmenü.
 - Mobil: Navigation über die Bildschirmhöhe, animierter Hamburger und Tastatursteuerung.
-- `partials/site-search.hbs` und `assets/site-search.js`: lokale Suche über alle acht Seiten.
+- `partials/site-search.hbs` und `assets/site-search.js`: lokale Suche über alle neun Seiten.
 - `partials/subpage-footer.hbs`: gemeinsamer Kontaktbereich und Footer.
 - `hr.hbs`, `outline.hbs`, `funktionen.hbs`: Produktseiten.
+- `integration.hbs`, `partials/integration-flow.hbs` und `assets/integration.css`: eigene Integrationsseite mit End-to-End-Abläufen für Eintritt, Wechsel und Austritt.
 
 Die Animationen verwenden Beispieldaten und erklären Abläufe. Sie sind keine
 Aufzeichnung der vollständigen Produktoberfläche und keine Verfügbarkeitszusage.

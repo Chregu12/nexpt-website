@@ -31,6 +31,10 @@ class Page(HTMLParser):
 with tempfile.TemporaryDirectory() as directory:
     output = Path(directory); preview.build_preview(output, 'http://localhost')
     pages = {'/' + str(f.relative_to(output)).removesuffix('index.html'): Page(f.read_text()) for f in output.rglob('*.html')}
+    routes = dict(re.findall(r'^  (/work/[^\n]*):\n    template: ([\w-]+)$', (preview.THEME / 'routes.yaml').read_text(), re.M))
+    for name in preview.PAGES:
+        route = '/work/' if name == 'work' else f'/work/{name}/'
+        assert routes.get(route) == name, ('missing Ghost route', route, name)
     for route, page in pages.items():
         assert all(target in page.ids for target in page.controls), ('missing dialog or ARIA target', route)
         for ref in page.refs:
@@ -46,4 +50,4 @@ with tempfile.TemporaryDirectory() as directory:
     assert 'data-higgsfield' not in source and not re.search(r'''{{asset ['"]video/''', source)
     assert set(re.findall(r'{{@custom\.([^}]+)}}', source)) == set(preview.CUSTOM)
 subprocess.run([sys.executable, str(Path(__file__).with_name('build-nexpt-search.py')), '--check'], check=True)
-print('PASS: 8 pages, assets, internal anchors, unique IDs, 6 dialogs, ARIA targets and all Ghost custom settings.')
+print(f'PASS: {len(pages)} pages, Ghost routes, assets, internal anchors, unique IDs, 6 dialogs, ARIA targets and all Ghost custom settings.')

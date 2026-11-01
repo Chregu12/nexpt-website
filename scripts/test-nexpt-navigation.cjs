@@ -76,13 +76,15 @@ class Node {
   await opener.emit('click');
   assert.match(status.textContent, /nicht verfügbar/, 'Network failure keeps the direct-entry fallback');
   failing = false; await opener.emit('click');
-  assert.equal(document.activeElement, input); assert.equal(results.children.length, 8);
+  assert.equal(document.activeElement, input); assert.equal(results.children.length, pages.length);
   input.value = 'FERIEN'; await input.emit('input');
   assert.ok(results.children.some(item => item.children[0].href === '/work/hr/'), 'HR content is searchable regardless of case');
   input.value = 'Überblick'; await input.emit('input'); const accented = results.children.length;
   input.value = 'Uberblick'; await input.emit('input'); assert.equal(results.children.length, accented);
   input.value = 'Spesen Freigaben'; await input.emit('input');
   assert.equal(results.children[0].children[0].href, '/work/hr/', 'Multiple words match actual page content');
+  input.value = 'End-to-End'; await input.emit('input');
+  assert.equal(results.children[0].children[0].href, '/work/integration/', 'The integration process is discoverable in site search');
   input.value = '<script>kein-treffer</script>'; await input.emit('input');
   assert.equal(results.children.length, 0); assert.match(status.textContent, /Keine passende Seite/);
   input.value = 'Outline'; await input.emit('input'); assert.match(results.children[0].children[0].children[0].textContent, /Outline/);

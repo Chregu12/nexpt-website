@@ -1,0 +1,51 @@
+{{!< default}}
+{{#contentFor "pageTitle"}}Volle Integration · Der End-to-End-Prozess · {{/contentFor}}
+{{> "header"}}
+<main class="subpage integration-page" id="main">
+  <section class="subpage-hero integration-hero" aria-labelledby="integration-title">
+    <p class="eyebrow">Volle Integration · End-to-End-Prozess</p>
+    <h1 id="integration-title">Ein Personalprozess.<br><em>Alles greift <span class="pencil-word">ineinander.{{> "pencil-underline"}}</span></em></h1>
+    <p class="subpage-lead">Ein Eintritt beginnt in HR. Daraus entstehen ein Zugang, Aufgaben für das Team und Wissen für den ersten Tag. Nexpt ist darauf ausgelegt, diesen Weg mit OpenDirectory oder Microsoft Entra ID, Work und Outline durchgängig zu verbinden.</p>
+    <div class="hero-actions"><a class="button" href="#end-to-end">Das Zusammenspiel entdecken <span aria-hidden="true">↓</span></a><a class="text-link" href="{{@site.url}}/work/kontakt/">Euren Prozess besprechen <span aria-hidden="true">↗</span></a></div>
+  </section>
+
+  <nav class="integration-jumps" aria-label="Zum Personalprozess"><a href="#eintritt"><span>01</span> Eintritt <b aria-hidden="true">↓</b></a><a href="#wechsel"><span>02</span> Wechsel <b aria-hidden="true">↓</b></a><a href="#austritt"><span>03</span> Austritt <b aria-hidden="true">↓</b></a></nav>
+
+  {{> "integration-flow"}}
+
+  <section class="integration-process" id="eintritt" aria-labelledby="eintritt-title">
+    <div class="integration-process-heading"><p class="eyebrow">01 / Eintritt · Joiner</p><h2 id="eintritt-title">Bereit, bevor<br><em>der erste Tag beginnt.</em></h2><p>Ein neuer Mensch kommt ins Unternehmen. HR, IT und das Team stimmen ihren Teil des Einstiegs aufeinander ab.</p><a class="text-link" href="{{@site.url}}/work/hr/">Mit Nexpt HR beginnen <span aria-hidden="true">↗</span></a></div>
+    <ol class="integration-steps">
+      <li><span class="integration-owner">HR</span><h3>Den Eintritt vorbereiten.</h3><p>Person, Anstellung, Team und Startdatum erfassen. Die zuständigen Rollen prüfen und genehmigen den Eintritt. Diese Angaben sind der Ausgangspunkt für die weiteren Schritte.</p></li>
+      <li><span class="integration-owner">Verzeichnis &amp; Single Sign-On</span><h3>Den passenden Zugang einrichten.</h3><p>Über die eingerichtete Anbindung werden Konto und Gruppen im gewählten Verzeichnis vorbereitet. Nexpt Single Sign-On führt zu den freigegebenen Anwendungen. Rollen und zusätzliche Freigaben legen den Zugriff innerhalb der Anwendungen fest.</p></li>
+      <li><span class="integration-owner">Nexpt Work</span><h3>Den Arbeitsplatz startklar machen.</h3><p>Die konfigurierte HR-Übergabe bringt IT-Aufgaben zu Work: etwa Ausrüstung bereitstellen oder einen Arbeitsplatz vorbereiten. Das zuständige Team führt diese Aufgaben mit Verantwortlichen und Terminen weiter.</p></li>
+      <li><span class="integration-owner">Nexpt Outline</span><h3>Wissen für den Einstieg bereitstellen.</h3><p>Teamhandbuch, Anleitungen und Einarbeitungswissen in passenden Sammlungen pflegen. Aufgaben in Work können auf diese Inhalte verweisen. Das Team prüft Zugang und Freigaben vor dem Arbeitsstart.</p></li>
+    </ol>
+  </section>
+
+  <section class="integration-process" id="wechsel" aria-labelledby="wechsel-title">
+    <div class="integration-process-heading"><p class="eyebrow">02 / Wechsel · Mover</p><h2 id="wechsel-title">Neue Rolle.<br><em>Klarer Übergang.</em></h2><p>Bei einem Team- oder Funktionswechsel ändern sich Aufgaben, Zugriffe und Wissensbedarf. Der Personalprozess hält den Anlass zusammen.</p></div>
+    <ol class="integration-steps">
+      <li><span class="integration-owner">HR</span><h3>Die Veränderung festhalten.</h3><p>Funktion, Organisationseinheit oder Führungskraft mit dem passenden Wirksamkeitsdatum aktualisieren. Die Beteiligten klären, was sich für die Person und ihre Teams ändert.</p></li>
+      <li><span class="integration-owner">Verzeichnis &amp; Single Sign-On</span><h3>Zugänge passend nachführen.</h3><p>Attribute und Gruppen gemäss den vereinbarten Regeln nachführen. Neue Freigaben prüfen und bisherige Berechtigungen überprüfen, damit ein Rollenwechsel nicht einfach immer mehr Zugriff bedeutet.</p></li>
+      <li><span class="integration-owner">Nexpt Work</span><h3>Verantwortung sauber übergeben.</h3><p>Offene Arbeit, Zuständigkeiten und Übergabeaufgaben im bisherigen und im neuen Team abstimmen. Der Wechsel bleibt mit konkreten nächsten Schritten verbunden.</p></li>
+      <li><span class="integration-owner">Nexpt Outline</span><h3>Den neuen Kontext zugänglich machen.</h3><p>Benötigtes Wissen und die Freigaben der Sammlungen prüfen. Entscheidungen und Übergabewissen dort festhalten, wo das nächste Team sie wiederfindet.</p></li>
+    </ol>
+  </section>
+
+  <section class="integration-process" id="austritt" aria-labelledby="austritt-title">
+    <div class="integration-process-heading"><p class="eyebrow">03 / Austritt · Leaver</p><h2 id="austritt-title">Zugänge beenden.<br><em>Wissen weitergeben.</em></h2><p>Ein guter Austritt verbindet den Entzug von Zugängen mit einer geordneten Übergabe der Arbeit und des Wissens.</p></div>
+    <ol class="integration-steps">
+      <li><span class="integration-owner">HR</span><h3>Den Austritt auslösen.</h3><p>Das Austrittsdatum festlegen und die nötigen Freigaben, Beteiligten und Übergaben klären. Der HR-Prozess gibt vor, wann welche Schritte erforderlich sind.</p></li>
+      <li><span class="integration-owner">Verzeichnis &amp; Single Sign-On</span><h3>Zugriff rechtzeitig entziehen.</h3><p>Kontosperre, Gruppen und den Entzug von Sitzungen aufeinander abstimmen. Verzeichnis und Nexpt-Anmeldung werden gemeinsam betrachtet; Zeitpunkt und Wirkung werden für die konkrete Umgebung geprüft.</p></li>
+      <li><span class="integration-owner">Nexpt Work</span><h3>Aufgaben und Ausrüstung übergeben.</h3><p>Die konfigurierte Übergabe kann IT-Aufgaben zum Offboarding an Work übermitteln. Rückgaben und offene Arbeit mit Zuständigkeiten weiterführen. Abschlüsse im jeweils verantwortlichen Prozess bestätigen.</p></li>
+      <li><span class="integration-owner">Nexpt Outline</span><h3>Wissen im Team halten.</h3><p>Anleitungen, Entscheidungen und Übergaben gemeinsam pflegen. Verantwortliche für wichtige Inhalte bestimmen und Freigaben nachführen, damit das Wissen für das Team nutzbar bleibt.</p></li>
+    </ol>
+  </section>
+
+  <section class="integration-setup" aria-labelledby="integration-setup-title">
+    <div><p class="eyebrow">Euer Unternehmen · euer Ablauf</p><h2 id="integration-setup-title">Die Verbindung muss<br>zu eurem Alltag passen.</h2></div>
+    <div><p>OpenDirectory und Microsoft Entra ID sind alternative Verzeichniswege. Gemeinsam klären wir das führende System, eure Rollen und Freigaben sowie die Übergaben zwischen HR, IT und den Teams.</p><p>Die Seite zeigt das vorgesehene End-to-End-Zusammenspiel. Welche Anbindungen und automatischen Schritte verfügbar sind, wird für eure Umgebung geprüft und eingerichtet. Eine Anmeldung ersetzt keine Berechtigungsprüfung; ein Aufgabenabschluss in Work schliesst den HR-Vorgang nicht automatisch ab.</p><a class="button" href="{{@site.url}}/work/kontakt/">Euren End-to-End-Prozess besprechen <span aria-hidden="true">↗</span></a></div>
+  </section>
+</main>
+{{> "subpage-footer"}}
