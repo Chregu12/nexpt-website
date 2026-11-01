@@ -25,3 +25,7 @@ Thumbs.db
 .idea/
 .vscode/
 backups/
+
+# Python theme preview
+__pycache__/
+*.pyc

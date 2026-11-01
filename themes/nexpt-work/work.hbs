@@ -1,0 +1,16 @@
+{{!< default}}
+{{#contentFor "pageTitle"}}Nexpt Work · {{/contentFor}}
+{{> "header"}}
+<main class="work-landing work-story-page" id="main">
+  <section class="nexpt-hero" aria-labelledby="nexpt-hero-title">
+    <div class="eyebrow">Nexpt · das Arbeitsinstrument für Teams</div>
+    <h1 id="nexpt-hero-title">Eure Arbeitsweise.<br><em>Gemeinsam im Blick.</em></h1>
+    <p>Projekte, Personalprozesse und Wissen gehören zum selben Arbeitsalltag. Nexpt ist darauf ausgelegt, die Sprache und Abläufe eurer Teams aufzunehmen – und den gemeinsamen Zusammenhang verständlich zu machen.</p>
+    <div class="hero-actions"><a class="button" href="#nexpt-workflow">Nexpt entdecken <span aria-hidden="true">↓</span></a><a class="text-link" href="{{@site.url}}/work/kontakt/">Mit uns sprechen <span aria-hidden="true">↗</span></a></div>
+  </section>
+  {{> "workflow-showcase"}}
+  {{> "work-stories"}}
+</main>
+{{> "subpage-footer"}}
+<script src="{{asset 'workflow-showcase.js'}}" defer></script>
+<script src="{{asset 'work-stories.js'}}" defer></script>
