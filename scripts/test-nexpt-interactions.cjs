@@ -247,3 +247,4 @@ for (const reduceMotion of [false, true]) {
   assert.equal(productFrames.size, 0, 'Changing the motion preference stops active playback');
 }
 console.log('PASS: Work, HR and Outline autoplay, synchronized progress, pause/resume, loop, offscreen/background suspension and reduced motion.');
+require('./test-nexpt-navigation.cjs');

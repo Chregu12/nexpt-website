@@ -4,14 +4,25 @@
   header.classList.add('nav-ready');
   const nav = header.querySelector('.nav');
   const toggle = header.querySelector('.mobile-nav-toggle');
+  const mobile = window.matchMedia('(max-width: 900px)');
+  const background = [...document.querySelectorAll('main, body > footer')];
   const menus = [...nav.querySelectorAll('details')];
   const closeMenus = except => menus.forEach(menu => { if (menu !== except) menu.open = false; });
-  const closeMobile = () => { header.removeAttribute('data-nav-open'); toggle.setAttribute('aria-expanded', 'false'); };
-  menus.forEach(menu => menu.addEventListener('toggle', () => { if (menu.open) closeMenus(menu); }));
+  const setMobile = open => {
+    if (open) header.setAttribute('data-nav-open', 'true'); else header.removeAttribute('data-nav-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menü schliessen' : 'Menü öffnen');
+    document.documentElement.classList.toggle('nav-open', open);
+    nav.inert = mobile.matches && !open;
+    if (nav.inert) nav.setAttribute('aria-hidden', 'true'); else nav.removeAttribute('aria-hidden');
+    background.forEach(element => { element.inert = open; });
+  };
+  const closeMobile = () => setMobile(false);
+  menus.forEach(menu => menu.addEventListener('toggle', () => { if (menu.open && !mobile.matches) closeMenus(menu); }));
   toggle.addEventListener('click', () => {
     const open = toggle.getAttribute('aria-expanded') !== 'true';
-    toggle.setAttribute('aria-expanded', String(open));
-    if (open) header.setAttribute('data-nav-open', 'true'); else { closeMobile(); closeMenus(); }
+    setMobile(open);
+    menus.forEach(menu => { menu.open = open; });
   });
   nav.querySelectorAll('a').forEach(link => {
     const url = new URL(link.href);
@@ -26,12 +37,23 @@
   });
   document.addEventListener('click', event => { if (!header.contains(event.target)) { closeMenus(); closeMobile(); } });
   document.addEventListener('keydown', event => {
+    if (document.querySelector('#site-search')?.open) return;
+    if (mobile.matches && toggle.getAttribute('aria-expanded') === 'true') {
+      if (event.key === 'Escape') { closeMobile(); closeMenus(); toggle.focus(); return; }
+      if (event.key === 'Tab') {
+        const focusable = [...header.querySelectorAll('a[href], button:not([disabled]), summary')].filter(element => element.getClientRects().length);
+        const target = event.shiftKey ? focusable.at(-1) : focusable[0];
+        if (document.activeElement === (event.shiftKey ? focusable[0] : focusable.at(-1))) { event.preventDefault(); target?.focus(); }
+      }
+    }
     if (event.key !== 'Escape') return;
     const open = menus.find(menu => menu.open);
     if (open) { closeMenus(); open.querySelector('summary').focus(); }
     else if (toggle.getAttribute('aria-expanded') === 'true') { closeMobile(); toggle.focus(); }
   });
-  window.matchMedia('(min-width: 901px)').addEventListener('change', () => { closeMenus(); closeMobile(); });
+  mobile.addEventListener('change', () => { closeMenus(); closeMobile(); });
+  document.addEventListener('nexpt:searchopen', () => { closeMenus(); closeMobile(); });
+  closeMobile();
 
   // Product context changes the information card; opening the dropdown stays click/keyboard controlled.
   const productsMenu = nav.querySelector('.products-disclosure');

@@ -23,6 +23,8 @@ Vorschau: `http://127.0.0.1:8766/work/`. Sie verwendet die Standardtexte aus
 - `assets/product-motion.js`: pausierbare Zeitachsen für die drei Ansichten.
 - `assets/work-stories.js`: Produktauswahl, Play/Pause, Fortschritt, Dialoge.
 - `partials/header.hbs` und `assets/navigation.js`: kontextabhängiges Produktmenü.
+- Mobil: Navigation über die Bildschirmhöhe, animierter Hamburger und Tastatursteuerung.
+- `partials/site-search.hbs` und `assets/site-search.js`: lokale Suche über alle acht Seiten.
 - `partials/subpage-footer.hbs`: gemeinsamer Kontaktbereich und Footer.
 - `hr.hbs`, `outline.hbs`, `funktionen.hbs`: Produktseiten.
 
@@ -33,6 +35,10 @@ lassen sich mit Pause/Play anhalten und fortsetzen. Ausserhalb des Sichtbereichs
 und in Hintergrund-Tabs pausieren sie; bei reduzierter Bewegung bleiben sie statisch.
 Die alten generierten Clips werden nicht geladen.
 Der Gründerfilm bleibt als eigenes Video mit manuellen Bedienelementen enthalten.
+
+Nach Textänderungen `python3 scripts/build-nexpt-search.py` ausführen. Der Suchindex
+wird aus den Seitenvorlagen erzeugt; die Theme-Prüfung erkennt einen veralteten Index.
+Suchanfragen bleiben im Browser und werden an keinen Suchanbieter übertragen.
 
 ## Ghost bereitstellen
 
