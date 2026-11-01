@@ -46,26 +46,30 @@
     const scene = root.querySelector('[data-motion-scene]');
     const button = root.querySelector('[data-motion-play]');
     if (!scene || !button) return;
-    let playing = false, visible = true, elapsed = 0, last = 0, frame = 0;
+    let playing = !reduced.matches, visible = !('IntersectionObserver' in window), elapsed = 0, last = 0, frame = 0;
     const tick = now => {
       if (last) elapsed = (elapsed + Math.min(now - last, 120)) % duration;
       last = now;
       render(scene, elapsed);
+      root.style.setProperty('--motion-progress', String(elapsed / duration));
       frame = requestAnimationFrame(tick);
     };
     const sync = () => {
       cancelAnimationFrame(frame);
       last = 0;
-      button.textContent = playing ? 'Animation pausieren' : 'Animation abspielen';
+      const label = playing ? 'Animation pausieren' : 'Animation abspielen';
+      button.setAttribute('aria-label', label);
+      button.title = label;
       button.setAttribute('aria-pressed', String(playing));
       button.disabled = reduced.matches;
       if (playing && visible && !document.hidden && !reduced.matches) frame = requestAnimationFrame(tick);
     };
-    button.addEventListener('click', () => { playing = !playing; sync(); });
+    button.addEventListener('click', () => { if (!reduced.matches) { playing = !playing; sync(); } });
     document.addEventListener('visibilitychange', sync);
     reduced.addEventListener('change', () => { if (reduced.matches) playing = false; sync(); });
     if ('IntersectionObserver' in window) new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }, { threshold: .2 }).observe(scene);
-    render(scene, 8000);
+    root.classList.add('is-motion-enhanced');
+    render(scene, playing ? 0 : 8000);
     sync();
   });
 })();

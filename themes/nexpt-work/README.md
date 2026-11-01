@@ -28,8 +28,10 @@ Vorschau: `http://127.0.0.1:8766/work/`. Sie verwendet die Standardtexte aus
 
 Die Animationen verwenden Beispieldaten und erklären Abläufe. Sie sind keine
 Aufzeichnung der vollständigen Produktoberfläche und keine Verfügbarkeitszusage.
-Sie starten nach Betätigung von Play, pausieren ausserhalb des Sichtbereichs und
-respektieren reduzierte Bewegung. Die alten generierten Clips werden nicht geladen.
+Sie starten automatisch im Sichtbereich, zeigen den zeitlichen Fortschritt und
+lassen sich mit Pause/Play anhalten und fortsetzen. Ausserhalb des Sichtbereichs
+und in Hintergrund-Tabs pausieren sie; bei reduzierter Bewegung bleiben sie statisch.
+Die alten generierten Clips werden nicht geladen.
 Der Gründerfilm bleibt als eigenes Video mit manuellen Bedienelementen enthalten.
 
 ## Ghost bereitstellen

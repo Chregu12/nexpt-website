@@ -11,7 +11,7 @@
     const status = root.querySelector('[data-story-status]');
     const motionNote = root.querySelector('[data-story-motion-note]');
     if (!motion || !panels.length || tabs.length !== panels.length || !playButton) return;
-    let active = 0, playing = false, inView = true, frame = 0, elapsed = 0, last = 0;
+    let active = 0, playing = !reducedMotion.matches, inView = !('IntersectionObserver' in window), frame = 0, elapsed = 0, last = 0;
     const canPlay = () => playing && inView && !document.hidden && !reducedMotion.matches;
     const updateControls = () => {
       root.classList.toggle('is-playing', playing);
@@ -83,7 +83,6 @@
     playButton.addEventListener('click', () => {
       if (reducedMotion.matches) return;
       playing = !playing;
-      if (playing) root.classList.add('has-started');
       syncPlayback();
     });
     root.addEventListener('focusin', event => {
@@ -98,8 +97,8 @@
     }, { threshold: .2 }).observe(root.querySelector('[data-story-stage]') || root);
     root.classList.add('is-enhanced');
     if (controls) panels[active].querySelector('.nexpt-story-visual')?.after(controls);
-    motion.render(scenes[active], 8000);
-    updateControls();
+    motion.render(scenes[active], playing ? 0 : 8000);
+    syncPlayback();
   });
 
   document.querySelectorAll('[data-benefit-open]').forEach(button => {
