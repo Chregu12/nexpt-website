@@ -1,0 +1,56 @@
+{
+  "name": "nexpt-work",
+  "version": "1.8.0",
+  "description": "Nexpt Suite Landingpages für Ghost: Work, HR und Outline.",
+  "author": {
+    "name": "Nexpt Work",
+    "email": "theme@example.invalid"
+  },
+  "license": "UNLICENSED",
+  "engines": {
+    "ghost": ">=6.0.0"
+  },
+  "config": {
+    "posts_per_page": 10,
+    "image_sizes": {
+      "xl": {
+        "width": 1600
+      }
+    },
+    "custom": {
+      "clarity_text": {
+        "type": "text",
+        "default": "Verknüpfe Vorhaben, Arbeitspakete und nächste Schritte. So bleibt sichtbar, welches Ziel eine Aufgabe unterstützt und wer sie weiterführt.",
+        "group": "homepage"
+      },
+      "timeline_text": {
+        "type": "text",
+        "default": "Vom Vorhaben über die Planung bis zur laufenden Arbeit: Teams ordnen Aufgaben ihren Abläufen zu und erkennen Fortschritt übergreifend.",
+        "group": "homepage"
+      },
+      "team_text": {
+        "type": "text",
+        "default": "Kanban, Scrum oder ein eigener Ablauf: Teams können mit unterschiedlichen Status und Fachbegriffen arbeiten. Der gemeinsame Überblick hilft, Abhängigkeiten und nächste Schritte zu verstehen.",
+        "group": "homepage"
+      },
+      "closing_text": {
+        "type": "text",
+        "default": "Entdecke, wie Nexpt Work Projektarbeit, laufenden Betrieb und Verbesserungen in einen nachvollziehbaren Arbeitsfluss einordnet.",
+        "group": "homepage"
+      },
+      "closing_button": {
+        "type": "text",
+        "default": "Mit uns sprechen",
+        "group": "homepage"
+      },
+      "footer_contact_kicker": {
+        "type": "text",
+        "default": "Direkt mit den Gründern",
+        "group": "homepage"
+      }
+    }
+  },
+  "keywords": [
+    "ghost-theme"
+  ]
+}

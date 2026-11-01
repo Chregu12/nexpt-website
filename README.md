@@ -1,4 +1,23 @@
-# webseite-ghost
+# Nexpt Website & Ghost
+
+Dieses Repository enthält den produktiven Nexpt-Auftritt und das vorhandene
+Headless-Projekt mit Seiteneditor.
+
+| Bereich | Status |
+|---|---|
+| [`themes/nexpt-work/`](themes/nexpt-work/) | Live-Theme für **nexpt.ch**, direkt durch Ghost gerendert |
+| `frontend/` | Separates Next.js-Frontend mit Puck-Seiteneditor |
+| `mcp/` | Ghost-API-Zugriff für Agenten |
+
+Das Theme enthält Produktmenü, Work-/HR-/Outline-Seiten, Modals und präzise
+Vektoranimationen mit Play/Pause. [Vorschau, Tests und Bereitstellung](themes/nexpt-work/README.md).
+
+Die beiden Codebasen sind hier zusammengeführt. Der Seiteneditor steuert das
+Live-Theme noch nicht; dafür wäre eine Übernahme der Nexpt-Seiten in Next.js nötig.
+
+---
+
+## Vorhandenes Headless-Projekt
 
 Persönliche Webseite & Blog im **Antigravity-Look**, gebaut als **Headless-Setup**:
 

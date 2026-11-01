@@ -1,0 +1,57 @@
+{{!< default}}
+{{#contentFor "pageTitle"}}Das Arbeitsmodell · {{/contentFor}}
+{{> "header"}}
+<main class="subpage model-page" id="main">
+  <section class="subpage-hero scene">
+    <div class="eyebrow">Nexpt Work · das gemeinsame Arbeitsmodell</div>
+    <h1>Ein Modell.<br><em>Viele Arbeitsweisen.</em></h1>
+    <p class="subpage-lead">Jedes Team bringt eigene Begriffe und Abläufe mit. Nexpt Work ist darauf ausgelegt, diese Vielfalt in einem verständlichen Überblick zusammenzuführen – vom Ziel bis zur nächsten Aktion.</p>
+    <div class="hero-actions">
+      <a class="button" href="#work-modes">Arbeitsmodi entdecken <span aria-hidden="true">↓</span></a>
+      <a class="text-link" href="{{@site.url}}/work/kontakt/">Über Nexpt sprechen <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <section class="model-example scene" aria-labelledby="model-example-title">
+    <div class="model-example-copy">
+      <div class="eyebrow">Begriffe je Fachbereich</div>
+      <h2 id="model-example-title">Drei Fachsprachen.<br><em>Ein Arbeitskontext.</em></h2>
+      <p>Ein Softwareteam sagt vielleicht „Story“, der Betrieb „Ticket“ und ein Bauprojekt „Bauabschnitt“. Nexpt trennt die Funktion eines Arbeitsschritts von seinem Fachbegriff, damit sich Abläufe passend zum Team beschreiben lassen.</p>
+      <div class="domain-examples"><span><small>SOFTWARE</small><strong>Story</strong></span><span><small>BETRIEB</small><strong>Ticket</strong></span><span><small>BAU</small><strong>Bauabschnitt</strong></span></div>
+      <div class="model-result"><strong>Gemeinsamer Überblick</strong><span>Ziel · Verantwortung · Fortschritt</span></div>
+    </div>
+    <figure class="model-example-visual" data-product-motion>{{> "motion-work"}}<button class="animation-toggle" type="button" data-motion-play aria-pressed="false">Animation abspielen</button><figcaption class="example-label">Illustration des gemeinsamen Arbeitsmodells</figcaption></figure>
+  </section>
+
+  <section class="work-modes scene" id="work-modes" aria-labelledby="work-modes-title">
+    <div class="eyebrow">Fünf Modi der Arbeit</div>
+    <h2 id="work-modes-title">Nicht jede Aufgabe ist ein Projekt.</h2>
+    <p class="section-lead">Das Nexpt-Modell unterscheidet, was Arbeit gerade bewegt. Damit lässt sich Arbeit ihrem Rhythmus und Zweck entsprechend einordnen.</p>
+    <div class="mode-grid">
+      <article class="mode-card"><span>01</span><h3>Veränderung</h3><p>Neue Vorhaben, Produkte und gemeinsame Ziele voranbringen.</p></article>
+      <article class="mode-card"><span>02</span><h3>Betrieb</h3><p>Laufende Arbeit, Service und tägliche Abläufe begleiten.</p></article>
+      <article class="mode-card"><span>03</span><h3>Wartung</h3><p>Bestehendes pflegen, aktualisieren und verlässlich halten.</p></article>
+      <article class="mode-card"><span>04</span><h3>Compliance</h3><p>Vorgaben, Kontrollen und Nachweise im Ablauf berücksichtigen.</p></article>
+      <article class="mode-card"><span>05</span><h3>Verbesserung</h3><p>Prozesse überprüfen und Schritt für Schritt weiterentwickeln.</p></article>
+    </div>
+  </section>
+
+  <section class="model-hierarchy scene" aria-labelledby="work-hierarchy-title">
+    <div class="eyebrow">Vom gemeinsamen Ziel zur nächsten Aktion</div>
+    <h2 id="work-hierarchy-title">Jeder Schritt behält<br><em>seinen Zusammenhang.</em></h2>
+    <p>Das UOMF ordnet Arbeit vom Ziel über Programm und Lieferobjekt bis zu Arbeitspaket und Aktion. So bleibt der Grund eines einzelnen Schritts im grösseren Vorhaben sichtbar.</p>
+    <ol class="hierarchy-list" aria-label="Arbeitsebenen im UOMF"><li><small>01</small><strong>Ziel</strong></li><li><small>02</small><strong>Programm</strong></li><li><small>03</small><strong>Lieferobjekt</strong></li><li><small>04</small><strong>Arbeitspaket</strong></li><li><small>05</small><strong>Aktion</strong></li></ol>
+  </section>
+
+  <section class="subpage-grid" aria-label="Funktionen von Nexpt Work">
+    <article class="subpage-card scene"><div class="eyebrow">01 / Portfolio</div><h2>Vom Ziel zur umsetzbaren Arbeit.</h2><p>Verbinde Initiativen, Epics, Features und Aufgaben, damit der Weg vom Vorhaben zur Umsetzung nachvollziehbar bleibt.</p></article>
+    <article class="subpage-card scene"><div class="eyebrow">02 / Planung</div><h2>Pläne über Teams hinweg.</h2><p>Ordne Arbeit Teams, PI-Planung und Sprints zu. Zusagen, Abhängigkeiten und nächste Schritte werden verständlicher.</p></article>
+    <article class="subpage-card scene"><div class="eyebrow">03 / Kapazität</div><h2>Arbeit passend verteilen.</h2><p>Stelle geplante Arbeit der verfügbaren Teamkapazität gegenüber und passe die Planung an, wenn Engpässe sichtbar werden.</p></article>
+    <article class="subpage-card scene"><div class="eyebrow">04 / Workflows</div><h2>Status, die zu Teams passen.</h2><p>Arbeite mit Kanban, Scrum oder eigenen Abläufen. Teams behalten ihre Sprache und machen Fortschritt für andere lesbar.</p></article>
+    <article class="subpage-card scene"><div class="eyebrow">05 / Zusammenarbeit</div><h2>Abhängigkeiten früh klären.</h2><p>Verknüpfe Arbeit, Kommentare und Zuständigkeiten, damit Blocker und benötigte Abstimmungen nicht im Hintergrund bleiben.</p></article>
+    <article class="subpage-card scene"><div class="eyebrow">06 / Lieferung</div><h2>Fortschritt bis zum Release.</h2><p>Verfolge Status und Meilensteine entlang der Umsetzung. Nexpt 2.0 enthält Reporting und DevOps-Anbindungen.</p></article>
+  </section>
+
+  <p class="availability-note">Die Ansichten hier sind illustrative Vorschauen und enthalten keine Live-Projektdaten. Für Fragen zu Zugang, Verfügbarkeit und passenden Abläufen sind wir gern im Gespräch.</p>
+</main>
+{{> "subpage-footer"}}
