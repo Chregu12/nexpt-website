@@ -29,6 +29,8 @@ Vorschau: `http://127.0.0.1:8766/work/`. Sie verwendet die Standardtexte aus
 - `partials/subpage-footer.hbs`: gemeinsamer Kontaktbereich und Footer.
 - `hr.hbs`, `outline.hbs`, `funktionen.hbs`: Produktseiten.
 - `integration.hbs`, `partials/integration-flow.hbs` und `assets/integration.css`: eigene Integrationsseite mit End-to-End-Abläufen für Eintritt, Wechsel und Austritt.
+- `seo.json` und die `pageTitle`-Blöcke: Beschreibungen, Seitentitel und Angaben für strukturierte Daten.
+- `partials/seo/`: erzeugte Metadaten für die neun öffentlichen Seiten und die Kontakt-Bestätigung.
 
 Die Animationen verwenden Beispieldaten und erklären Abläufe. Sie sind keine
 Aufzeichnung der vollständigen Produktoberfläche und keine Verfügbarkeitszusage.
@@ -38,9 +40,19 @@ und in Hintergrund-Tabs pausieren sie; bei reduzierter Bewegung bleiben sie stat
 Die alten generierten Clips werden nicht geladen.
 Der Gründerfilm bleibt als eigenes Video mit manuellen Bedienelementen enthalten.
 
-Nach Textänderungen `python3 scripts/build-nexpt-search.py` ausführen. Der Suchindex
-wird aus den Seitenvorlagen erzeugt; die Theme-Prüfung erkennt einen veralteten Index.
+Nach Textänderungen zuerst `python3 scripts/build-nexpt-seo.py`, dann
+`python3 scripts/build-nexpt-search.py` ausführen. SEO-Ausgaben, KI-Texte und Suchindex
+werden aus den Seitenvorlagen erzeugt; die Theme-Prüfung erkennt veraltete Ausgaben.
 Suchanfragen bleiben im Browser und werden an keinen Suchanbieter übertragen.
+
+Die nativen Seiten erhalten eigene Titel, Beschreibungen, kanonische URLs,
+OG-/Twitter-Vorschauen und JSON-LD für Organisation, Website, Seite und Navigation.
+Die drei Produktseiten ergänzen SoftwareApplication ohne Preis- oder Bewertungsangaben.
+Normale Ghost-Posts und -Seiten behalten die Ghost-Metadaten. Die Kontakt-Bestätigung
+ist nicht zur Indexierung vorgesehen. `assets/nexpt-llms*.txt` werden aus den
+öffentlichen Seitentexten erzeugt; der Nginx-Include im Repository stellt sie unter
+`/llms.txt` und `/llms-full.txt` bereit. Die Dateien ersetzen keine technische
+Indexierbarkeit und garantieren keine Aufnahme in Such- oder KI-Antworten.
 
 ## Ghost bereitstellen
 

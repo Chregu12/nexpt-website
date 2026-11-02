@@ -1,0 +1,54 @@
+{
+  "site_url": "https://nexpt.ch",
+  "name": "Nexpt",
+  "description": "Das Arbeitsinstrument für Projekte, Menschen und Wissen. Nexpt verbindet Work, HR und Outline mit den Begriffen und Abläufen eurer Teams.",
+  "pages": {
+    "work": {
+      "label": "Nexpt Work",
+      "description": "Nexpt Work verbindet Projektmanagement, laufenden Betrieb und Teamarbeit. Entdeckt flexible Workflows, klare Zuständigkeiten und den gemeinsamen Überblick.",
+      "application": "Nexpt Work"
+    },
+    "hr": {
+      "label": "Nexpt HR",
+      "description": "Nexpt HR für Personalprozesse, Onboarding und Mitarbeitenden-Self-Service: ein Arbeitsplatz für HR und ein persönlicher Bereich für Mitarbeitende.",
+      "application": "Nexpt HR"
+    },
+    "outline": {
+      "label": "Nexpt Outline",
+      "description": "Nexpt Outline für Wissensmanagement und Dokumentation: Anleitungen, Entscheidungen und Teamwissen gemeinsam pflegen und mit der Arbeit verknüpfen.",
+      "application": "Nexpt Outline"
+    },
+    "integration": {
+      "label": "Integration",
+      "description": "Der End-to-End-Prozess von Nexpt HR über OpenDirectory oder Microsoft Entra ID zu Work und Outline: Eintritt, Wechsel, Austritt, Aufgaben und Wissen."
+    },
+    "funktionen": {
+      "label": "Arbeitsmodell",
+      "description": "Das Nexpt-Arbeitsmodell verbindet Ziele, Planung, Aufgaben und Releases. Eigene Begriffe und Workflows für Projektarbeit, Betrieb und Verbesserungen."
+    },
+    "einsatzbereiche": {
+      "label": "Einsatzbereiche",
+      "description": "Nexpt für IT, HR, Marketing und weitere Teams: Projekte, Serviceanfragen, Personalprozesse und Wissen mit passenden Abläufen gemeinsam koordinieren."
+    },
+    "faq": {
+      "label": "Häufige Fragen",
+      "description": "Antworten zu Nexpt Work, HR und Outline: Einsatzbereiche, Workflows, Integration mit OpenDirectory oder Entra ID sowie Zugang und Verfügbarkeit."
+    },
+    "wer-wir-sind": {
+      "label": "Wer wir sind",
+      "description": "Raphael und Christian Heusser haben Nexpt gegründet. Lernt die Menschen, die Idee hinter dem Arbeitsinstrument und unseren Gründerfilm kennen.",
+      "page_type": "AboutPage",
+      "image": "film-poster-r24.jpg"
+    },
+    "kontakt": {
+      "label": "Kontakt",
+      "description": "Sprecht mit Raphael und Christian Heusser über Nexpt. Gemeinsam betrachten wir eure Teamabläufe, Personalprozesse und passende Anbindungen.",
+      "page_type": "ContactPage"
+    },
+    "kontakt-danke": {
+      "label": "Nachricht übermittelt",
+      "description": "Deine Kontaktanfrage an Nexpt wurde zur Übermittlung angenommen. Wir antworten an die angegebene E-Mail-Adresse.",
+      "noindex": true
+    }
+  }
+}
