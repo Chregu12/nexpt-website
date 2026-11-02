@@ -1,0 +1,22 @@
+# Nexpt – Arbeit, Menschen und Wissen
+
+> Das Arbeitsinstrument für Projekte, Menschen und Wissen. Nexpt verbindet Work, HR und Outline mit den Begriffen und Abläufen eurer Teams.
+
+Die Website stellt Nexpt Work, Nexpt HR und Nexpt Outline anhand illustrativer Produktvorschauen vor. Aktuellen Funktionsumfang, Zugang und Anbindungen klären die Gründer im persönlichen Gespräch. Verfügbarkeit und Einrichtung von Verzeichnisanbindungen hängen von der jeweiligen Umgebung ab.
+
+## Produkt- und Themenseiten
+
+- [Nexpt Work](https://nexpt.ch/work/): Nexpt Work verbindet Projektmanagement, laufenden Betrieb und Teamarbeit. Entdeckt flexible Workflows, klare Zuständigkeiten und den gemeinsamen Überblick.
+- [Nexpt HR](https://nexpt.ch/work/hr/): Nexpt HR für Personalprozesse, Onboarding und Mitarbeitenden-Self-Service: ein Arbeitsplatz für HR und ein persönlicher Bereich für Mitarbeitende.
+- [Nexpt Outline](https://nexpt.ch/work/outline/): Nexpt Outline für Wissensmanagement und Dokumentation: Anleitungen, Entscheidungen und Teamwissen gemeinsam pflegen und mit der Arbeit verknüpfen.
+- [Integration](https://nexpt.ch/work/integration/): Der End-to-End-Prozess von Nexpt HR über OpenDirectory oder Microsoft Entra ID zu Work und Outline: Eintritt, Wechsel, Austritt, Aufgaben und Wissen.
+- [Arbeitsmodell](https://nexpt.ch/work/funktionen/): Das Nexpt-Arbeitsmodell verbindet Ziele, Planung, Aufgaben und Releases. Eigene Begriffe und Workflows für Projektarbeit, Betrieb und Verbesserungen.
+- [Einsatzbereiche](https://nexpt.ch/work/einsatzbereiche/): Nexpt für IT, HR, Marketing und weitere Teams: Projekte, Serviceanfragen, Personalprozesse und Wissen mit passenden Abläufen gemeinsam koordinieren.
+- [Häufige Fragen](https://nexpt.ch/work/faq/): Antworten zu Nexpt Work, HR und Outline: Einsatzbereiche, Workflows, Integration mit OpenDirectory oder Entra ID sowie Zugang und Verfügbarkeit.
+- [Wer wir sind](https://nexpt.ch/work/wer-wir-sind/): Raphael und Christian Heusser haben Nexpt gegründet. Lernt die Menschen, die Idee hinter dem Arbeitsinstrument und unseren Gründerfilm kennen.
+- [Kontakt](https://nexpt.ch/work/kontakt/): Sprecht mit Raphael und Christian Heusser über Nexpt. Gemeinsam betrachten wir eure Teamabläufe, Personalprozesse und passende Anbindungen.
+
+## Weitere Informationen
+
+- [Vollständige öffentliche Seitentexte](https://nexpt.ch/llms-full.txt)
+- [Sitemap](https://nexpt.ch/sitemap.xml)

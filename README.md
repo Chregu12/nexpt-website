@@ -20,6 +20,7 @@ benötigt weder ein Node-Build noch externe UI-Bibliotheken.
 - Gezeichnete Pencil-Akzente: Kreise, Unterstreichungen und Häkchen.
 - Vorteilskacheln mit Dialogen, Gründerfilm und gemeinsamer Kontaktbereich.
 - Tastaturbedienung und Unterstützung für reduzierte Bewegung.
+- Eigene SEO-Metadaten, JSON-LD und Link-Vorschauen je Seite sowie aktuelle KI-Textdateien.
 
 Die Produktvorschauen erklären Abläufe anhand von Beispieldaten. Den aktuellen
 Funktionsumfang und mögliche Anbindungen klären wir im persönlichen Gespräch.
@@ -37,9 +38,10 @@ python3 scripts/preview-nexpt-theme.py
 Die Vorschau läuft unter <http://127.0.0.1:8766/work/>. Sie verwendet die
 Standardtexte des Themes; Ghost-Datenbank und Kontakt-API werden nicht gestartet.
 
-Nach Änderungen an Seitentexten den Suchindex aktualisieren:
+Nach Änderungen an Seitentexten die SEO-Ausgaben, KI-Texte und den Suchindex aktualisieren:
 
 ```sh
+python3 scripts/build-nexpt-seo.py
 python3 scripts/build-nexpt-search.py
 ```
 
@@ -51,7 +53,7 @@ node scripts/test-nexpt-interactions.cjs
 ```
 
 Die Checks prüfen Seiten, Assets, interne Links, ARIA-Verweise, Dialoge und den
-Suchindex sowie Navigation, Suche und Animationssteuerung. GitHub Actions prüft
+Suchindex sowie SEO-Metadaten, strukturierte Daten, Navigation, Suche und Animationssteuerung. GitHub Actions prüft
 zusätzlich das Headless-Frontend und die Integration mit Ghost.
 
 ## Projektstruktur
@@ -75,6 +77,17 @@ Für eine Veröffentlichung das aktive Theme sichern, die Theme-Version erhöhen
 und die geprüfte Version in Ghost bereitstellen. Die vorhandenen URLs und
 `routes.yaml` müssen erhalten bleiben. Das Kontaktformular verwendet die bereits
 betriebene API unter `/api/contact/`.
+
+Die SEO-Beschreibungen stehen in `themes/nexpt-work/seo.json`, die Titel im
+`pageTitle`-Block jeder Seite. Der Generator erzeugt die Head-Partials und
+öffentlichen KI-Textdateien aus den tatsächlichen Theme-Inhalten. Die Kontakt-
+Bestätigung erhält `noindex`; erfundene Preise, Bewertungen und Verfügbarkeiten
+werden nicht ausgezeichnet. Für `/llms.txt` und `/llms-full.txt` bindet der Server
+[`deploy/nexpt-discovery.nginx.conf`](deploy/nexpt-discovery.nginx.conf) innerhalb
+des bestehenden HTTPS-Blocks ein. Ghost verwaltet weiterhin Sitemap und robots.txt.
+Der Include leitet ausserdem die unveränderten Ghost-Beispielseiten `/about/` und
+`/coming-soon/` auf die passenden Nexpt-Seiten weiter, ohne Inhalte zu löschen.
+Das separate Headless-Frontend verwendet seine eigenen Metadaten und KI-Routen.
 
 Details: **[Theme-Dokumentation](themes/nexpt-work/README.md)**.
 Zugangsdaten, Datenbanken, Serverkonfiguration und Backups gehören nicht ins Git.

@@ -1,7 +1,9 @@
 {{!< default}}
-{{#contentFor "pageTitle"}}Kontakt · {{/contentFor}}
+{{#contentFor "pageTitle"}}Kontakt zu Nexpt – Euren Arbeitsalltag besprechen{{/contentFor}}
+{{#contentFor "seo"}}{{> "seo/kontakt"}}{{/contentFor}}
 {{> "header"}}
-<main class="subpage" id="main"><section class="subpage-hero scene"><div class="eyebrow">Kontakt</div><h1>Gute Arbeit beginnt<br>mit einem <em>Gespräch.</em></h1><p class="subpage-lead">Eine Frage zu Nexpt, eine Idee oder ein konkreter Arbeitsablauf? Schreib uns.</p></section>
+<main class="subpage" id="main">
+  <nav class="breadcrumbs" aria-label="Brotkrumennavigation"><a href="{{@site.url}}/work/">Nexpt</a><span aria-hidden="true">/</span><span aria-current="page">Kontakt</span></nav><section class="subpage-hero scene"><div class="eyebrow">Kontakt</div><h1>Gute Arbeit beginnt<br>mit einem <em>Gespräch.</em></h1><p class="subpage-lead">Eine Frage zu Nexpt, eine Idee oder ein konkreter Arbeitsablauf? Schreib uns.</p></section>
 <div class="contact-layout"><aside><h2>Direkt zu uns.</h2><p>Deine Anfrage geht an das Nexpt-Team. Deine E-Mail-Adresse verwenden wir, um dir zu antworten.</p><p class="contact-note">Der Spam-Schutz wird direkt hier geprüft. Deine Nachricht wird anschliessend verschlüsselt an unseren E-Mail-Dienst übermittelt.</p></aside>
 <form id="contact-form" class="contact-form" action="/api/contact/submit" method="post">
 <div id="contact-availability" class="contact-status" role="status">Das Kontaktformular wird geladen.</div>
